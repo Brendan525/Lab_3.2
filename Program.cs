@@ -17,8 +17,8 @@ namespace Lab_3._2
 
 
             Dictionary<string, double> items = new Dictionary<string, double>(); // Collections of keys and values
-            items["apple"] = 0.99;
-            items["banana"] = 0.59;
+            items["apple"] =                        0.99;
+            items["banana"] =                            0.59;
             items["cauliflower"] = 1.59;
             items["dragonfruit"] = 2.19;
             items["elderberry"] = 1.79;
@@ -31,7 +31,7 @@ namespace Lab_3._2
 
             ArrayList shoppingPrice = new ArrayList(); // Empty Array List called shopping price
 
-            Console.Write("Welcoms to Brendan's Market!");
+            Console.Write("Welcome to Brendan's Market!");
 
             Console.WriteLine("\n");
 
@@ -41,7 +41,7 @@ namespace Lab_3._2
 
             foreach (KeyValuePair<string, double> item in items)
             {
-                Console.WriteLine($"{item.Key}\t\t\t\t {item.Value}"); // Prints the item and the value from the collection dictionary. Key is the item and value is the number
+                Console.WriteLine($"{item.Key,-15}\t\t\t\t{item.Value,13}"); // Prints the item and the value from the collection dictionary. Key is the item and value is the number
             }
 
             do
@@ -65,8 +65,6 @@ namespace Lab_3._2
 
                     input2 = Console.ReadLine();
 
-                    Console.Write("\n");
-
                     if (input2 == "y")
                     {
                         redo = true;
@@ -79,18 +77,15 @@ namespace Lab_3._2
                         Console.Write("\n");
                         for (int index = 0; index < shoppingCart.Count; index++) // Loops through each item in the shoppingCart arraylist
                         {
-                            Console.WriteLine($"{shoppingCart[index]}  {shoppingPrice[index]}"); 
+                            Console.WriteLine($"{shoppingCart[index],-15}  {shoppingPrice[index],5}"); 
                             totalPrice += (double)shoppingPrice[index];
                         }
 
-                        
                         averagePrice = totalPrice / shoppingCart.Count;
 
-                        Console.WriteLine($"The average price per item in order was {averagePrice}");
+                        Console.WriteLine($"The average price per item in order was {Math.Round(averagePrice,2)}");
                         redo = false;
-
                     }
-                    
                 }
                 else
                 {
