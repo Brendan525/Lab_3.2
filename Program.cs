@@ -17,8 +17,8 @@ namespace Lab_3._2
 
 
             Dictionary<string, double> items = new Dictionary<string, double>(); // Collections of keys and values
-            items["apple"] =                        0.99;
-            items["banana"] =                            0.59;
+            items["apple"] = 0.99;
+            items["banana"] = 0.59;
             items["cauliflower"] = 1.59;
             items["dragonfruit"] = 2.19;
             items["elderberry"] = 1.79;
