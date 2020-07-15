@@ -10,12 +10,13 @@ namespace Lab_3._2
         static void Main(string[] args)
         {
             string input, input2;
-            int total, average;
+            double totalPrice = 0;
+            double averagePrice;
 
             bool redo = true;
 
 
-            Dictionary<string, double> items = new Dictionary<string, double>();
+            Dictionary<string, double> items = new Dictionary<string, double>(); // Collections of keys and values
             items["apple"] = 0.99;
             items["banana"] = 0.59;
             items["cauliflower"] = 1.59;
@@ -26,39 +27,37 @@ namespace Lab_3._2
             items["honeydew"] = 3.49;
 
 
-            ArrayList shoppingCart = new ArrayList();
+            ArrayList shoppingCart = new ArrayList(); // Empty Array List called shoppingCart 
 
-            ArrayList shoppingPrice = new ArrayList();
+            ArrayList shoppingPrice = new ArrayList(); // Empty Array List called shopping price
 
             Console.Write("Welcoms to Brendan's Market!");
 
             Console.WriteLine("\n");
 
-            Console.Write("Item\t\t\t\t\tPrice");
+            Console.Write("Item\t\t\t\t\t\tPrice");
 
             Console.WriteLine("\n");
 
             foreach (KeyValuePair<string, double> item in items)
             {
-                Console.WriteLine($"{item.Key}\t\t\t\t{item.Value}");
+                Console.WriteLine($"{item.Key}\t\t\t\t {item.Value}"); // Prints the item and the value from the collection dictionary. Key is the item and value is the number
             }
 
             do
             {
+                Console.Write("\n");
+
                 Console.Write("What item would you like to order? ");
 
                 input = Console.ReadLine();
 
-                //if (input != "apple" | input != "banana" | input != "cauliflower" | input != "dragonfruit" | input != "elderberry" | input != "figs" | input != "grapefruit" | input != "honeydew")
-                //{
-                //    Console.WriteLine("Sorry, we don't have those. Please try again");
-                //    redo = true;
-                //}
-                if (input == "apple")
+               
+                if (items.ContainsKey(input)) // Looks for a key in the items dictionary from the users input
                 {
-                    Console.WriteLine("Adding apple to cart at $0.99");
-                    shoppingCart.Add("apple");
-                    shoppingPrice.Add(0.99);
+                    Console.WriteLine($"Adding {input} to cart at {items[input]}");
+                    shoppingCart.Add(input); // Adds the users input to the shoppingCart arraylist
+                    shoppingPrice.Add(items[input]); // Adds the users input to the shoppingPrice arraylist
 
                     Console.Write("\n");
 
@@ -78,265 +77,28 @@ namespace Lab_3._2
                         Console.Write("\n");
                         Console.WriteLine("Here's what you got:");
                         Console.Write("\n");
-                        for (int index = 0; index < shoppingCart.Count; index++)
+                        for (int index = 0; index < shoppingCart.Count; index++) // Loops through each item in the shoppingCart arraylist
                         {
-                            Console.WriteLine($"{shoppingCart[index]}  {shoppingPrice[index]}");
+                            Console.WriteLine($"{shoppingCart[index]}  {shoppingPrice[index]}"); 
+                            totalPrice += (double)shoppingPrice[index];
                         }
 
-                        average = shoppingCart.Count / shoppingPrice.Count;
+                        
+                        averagePrice = totalPrice / shoppingCart.Count;
 
-                        Console.WriteLine($"The average price per item in order was {average}");
+                        Console.WriteLine($"The average price per item in order was {averagePrice}");
                         redo = false;
 
                     }
-                    else if (input == "banana")
-                    {
-                        Console.WriteLine("Adding banana to cart at $0.59");
-                        shoppingCart.Add("banana");
-                        shoppingPrice.Add(0.59);
-
-                        Console.Write("\n");
-
-                        Console.WriteLine("Would you like to order anything else (y/n)");
-
-                        input2 = Console.ReadLine();
-
-                        Console.Write("\n");
-
-                        if (input2 == "y")
-                        {
-                            redo = true;
-                        }
-                        else if (input2 == "n")
-                        {
-                            Console.WriteLine("Thanks for your order!");
-                            Console.Write("\n");
-                            Console.WriteLine("Here's what you got:");
-                            Console.Write("\n");
-                            for (int index = 0; index < shoppingCart.Count; index++)
-                            {
-                                Console.WriteLine($"{shoppingCart[index]}  {shoppingPrice[index]}");
-                            }
-
-                            average = shoppingCart.Count / shoppingPrice.Count;
-
-                            Console.WriteLine($"The average price per item in order was {average}");
-                            redo = false;
-                        }
-                        else if (input == "cauliflower")
-                        {
-                            Console.WriteLine("Adding cauliflower to cart at $1.59");
-                            shoppingCart.Add("cauliflower");
-                            shoppingPrice.Add(1.59);
-
-                            Console.Write("\n");
-
-                            Console.WriteLine("Would you like to order anything else (y/n)");
-
-                            input2 = Console.ReadLine();
-
-                            Console.Write("\n");
-
-                            if (input2 == "y")
-                            {
-                                redo = true;
-                            }
-                            else if (input2 == "n")
-                            {
-                                Console.WriteLine("Thanks for your order!");
-                                Console.Write("\n");
-                                Console.WriteLine("Here's what you got:");
-                                Console.Write("\n");
-                                for (int index = 0; index < shoppingCart.Count; index++)
-                                {
-                                    Console.WriteLine($"{shoppingCart[index]}  {shoppingPrice[index]}");
-                                }
-
-                                average = shoppingCart.Count / shoppingPrice.Count;
-
-                                Console.WriteLine($"The average price per item in order was {average}");
-                                redo = false;
-                            }
-                            else if (input == "dragonfruit")
-                            {
-                                Console.WriteLine("Adding dragonfruit to cart at $2.19");
-                                shoppingCart.Add("dragonfruit");
-                                shoppingPrice.Add(2.19);
-
-                                Console.Write("\n");
-
-                                Console.WriteLine("Would you like to order anything else (y/n)");
-
-                                input2 = Console.ReadLine();
-
-                                Console.Write("\n");
-
-                                if (input2 == "y")
-                                {
-                                    redo = true;
-                                }
-                                else if (input2 == "n")
-                                {
-                                    Console.WriteLine("Thanks for your order!");
-                                    Console.Write("\n");
-                                    Console.WriteLine("Here's what you got:");
-                                    Console.Write("\n");
-                                    for (int index = 0; index < shoppingCart.Count; index++)
-                                    {
-                                        Console.WriteLine($"{shoppingCart[index]}  {shoppingPrice[index]}");
-                                    }
-
-                                    average = shoppingCart.Count / shoppingPrice.Count;
-
-                                    Console.WriteLine($"The average price per item in order was {average}");
-                                    redo = false;
-                                }
-                                else if (input == "elderberry")
-                                {
-                                    Console.WriteLine("Adding elderberry to cart at $1.79");
-                                    shoppingCart.Add("elderberry");
-                                    shoppingPrice.Add(1.79);
-
-                                    Console.Write("\n");
-
-                                    Console.WriteLine("Would you like to order anything else (y/n)");
-
-                                    input2 = Console.ReadLine();
-
-                                    Console.Write("\n");
-
-                                    if (input2 == "y")
-                                    {
-                                        redo = true;
-                                    }
-                                    else if (input2 == "n")
-                                    {
-                                        Console.WriteLine("Thanks for your order!");
-                                        Console.Write("\n");
-                                        Console.WriteLine("Here's what you got:");
-                                        Console.Write("\n");
-                                        for (int index = 0; index < shoppingCart.Count; index++)
-                                        {
-                                            Console.WriteLine($"{shoppingCart[index]}  {shoppingPrice[index]}");
-                                        }
-
-                                        average = shoppingCart.Count / shoppingPrice.Count;
-
-                                        Console.WriteLine($"The average price per item in order was {average}");
-                                        redo = false;
-                                    }
-                                    else if (input == "figs")
-                                    {
-                                        Console.WriteLine("Adding figs to cart at $2.09");
-                                        shoppingCart.Add("figs");
-                                        shoppingPrice.Add(2.09);
-
-                                        Console.Write("\n");
-
-                                        Console.WriteLine("Would you like to order anything else (y/n)");
-
-                                        input2 = Console.ReadLine();
-
-                                        Console.Write("\n");
-
-                                        if (input2 == "y")
-                                        {
-                                            redo = true;
-                                        }
-                                        else if (input2 == "n")
-                                        {
-                                            Console.WriteLine("Thanks for your order!");
-                                            Console.Write("\n");
-                                            Console.WriteLine("Here's what you got:");
-                                            Console.Write("\n");
-                                            for (int index = 0; index < shoppingCart.Count; index++)
-                                            {
-                                                Console.WriteLine($"{shoppingCart[index]}  {shoppingPrice[index]}");
-                                            }
-
-                                            average = shoppingCart.Count / shoppingPrice.Count;
-
-                                            Console.WriteLine($"The average price per item in order was {average}");
-                                            redo = false;
-                                        }
-                                        else if (input == "grapefruit")
-                                        {
-                                            Console.WriteLine("Adding grapefruit to cart at $1.99");
-                                            shoppingCart.Add("grapefruit");
-                                            shoppingPrice.Add(1.99);
-
-                                            Console.Write("\n");
-
-                                            Console.WriteLine("Would you like to order anything else (y/n)");
-
-                                            input2 = Console.ReadLine();
-
-                                            Console.Write("\n");
-
-                                            if (input2 == "y")
-                                            {
-                                                redo = true;
-                                            }
-                                            else if (input2 == "n")
-                                            {
-                                                Console.WriteLine("Thanks for your order!");
-                                                Console.Write("\n");
-                                                Console.WriteLine("Here's what you got:");
-                                                Console.Write("\n");
-                                                for (int index = 0; index < shoppingCart.Count; index++)
-                                                {
-                                                    Console.WriteLine($"{shoppingCart[index]}  {shoppingPrice[index]}");
-                                                }
-
-                                                average = shoppingCart.Count / shoppingPrice.Count;
-
-                                                Console.WriteLine($"The average price per item in order was {average}");
-                                                redo = false;
-                                            }
-                                            else if (input == "honeydew")
-                                            {
-                                                Console.WriteLine("Adding honeydew to cart at $3.49");
-                                                shoppingCart.Add("honeydew");
-                                                shoppingPrice.Add(3.49);
-
-                                                Console.Write("\n");
-
-                                                Console.WriteLine("Would you like to order anything else (y/n)");
-
-                                                input2 = Console.ReadLine();
-
-                                                Console.Write("\n");
-
-                                                if (input2 == "y")
-                                                {
-                                                    redo = true;
-                                                }
-                                                else if (input2 == "n")
-                                                {
-                                                    Console.WriteLine("Thanks for your order!");
-                                                    Console.Write("\n");
-                                                    Console.WriteLine("Here's what you got:");
-                                                    Console.Write("\n");
-                                                    for (int index = 0; index < shoppingCart.Count; index++)
-                                                    {
-                                                        Console.WriteLine($"{shoppingCart[index]}  {shoppingPrice[index]}");
-                                                    }
-
-                                                    average = shoppingCart.Count / shoppingPrice.Count;
-
-                                                    Console.WriteLine($"The average price per item in order was {average}");
-                                                    redo = false;
-                                                }
-
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    
                 }
+                else
+                {
+                    Console.WriteLine("Sorry, we don't have those. Please try again");
+                    redo = true;
+                }
+               
             } while (redo);
-        }
+        } 
     }
 }
